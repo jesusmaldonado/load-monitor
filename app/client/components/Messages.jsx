@@ -1,6 +1,5 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
-import classNames from 'classnames';
 import moment from 'moment';
 import ErrorMessage from './ErrorMessage';
 import ClearedMessage from './ClearedMessage';

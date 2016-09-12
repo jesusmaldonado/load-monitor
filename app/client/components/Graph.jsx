@@ -3,7 +3,6 @@
 
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
-import classNames from 'classnames';
 import * as d3 from "d3";
 import moment from 'moment';
 export default React.createClass({
@@ -22,10 +21,10 @@ export default React.createClass({
     var x = d3.scaleBand()
       .range([0, width])
       .padding(0.2);
-      console.log(x.bandwidth());
 
     var y = d3.scaleLinear()
       .range([height, 0]);
+
     // redraw the svg, use transform rather than absolute positioning
     // transform avoids additional renders cycles
     // triggers composition
