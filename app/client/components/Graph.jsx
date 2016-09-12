@@ -22,6 +22,8 @@ export default React.createClass({
     var x = d3.scaleBand()
       .range([0, width])
       .padding(0.2);
+      console.log(x.bandwidth());
+
     var y = d3.scaleLinear()
       .range([height, 0]);
     // redraw the svg, use transform rather than absolute positioning
@@ -41,7 +43,7 @@ export default React.createClass({
     });
     x.domain(loads.map(function(load) { return load['time']; }));
     y.domain([0, d3.max(loads, function(load) { return load['load']; })]);
-
+    console.log(x.bandwidth());
     //the custom tick logic makes it so that only certain values are available
     var ticks = x.domain().filter(function(d,i){ return (i % 10 == 0 || i == 59); } );
     var xAxis = d3.axisBottom(x).tickFormat(d3.timeFormat('%H:%M:%S'));
@@ -53,10 +55,10 @@ export default React.createClass({
       'under-load': loads.filter(load => load['load'] <= 1)
     }
 
-    // this div is only created once
+    // this div is only created once it will be the tooltip
     var div = d3.select(".graph").append("div")
-    .attr("class", "tooltip")
-    .style("opacity", 0);
+      .attr("class", "tooltip")
+      .style("opacity", 0);
     Object.keys(graphObj).forEach((key) => {
       // this de-duplicates adding bars and only changes the color logic
       // for the appropriate dataset
@@ -67,7 +69,7 @@ export default React.createClass({
         .attr("class", "bar")
         .style('fill', color)
         .attr("x", function(d) { return x(d.time); })
-        .attr("width", x.bandwidth())
+        .attr("width", 8)
         .attr("y", function(d) { return y(d.load); })
         .attr("height", function(d) { return height - y(d.load); })
         .on("mouseover", function(d,idx,bars) {
@@ -80,12 +82,14 @@ export default React.createClass({
           div.transition()
             .duration(200)
             .style("opacity", .8);
-          div.html(`<div><strong>Load</strong>: ${d.load}</div> <div><strong>Time</strong>: ${time}</div>`)
-            .style("left", (d3.event.pageX + 10) + "px")
-            .style("top", (d3.event.pageY + 10) + "px");
+          div.html(`<div><strong>Load</strong>: ${d.load.toFixed(2)}</div>
+            <div class="time-stamp"><strong>Time</strong>: ${time}</div>
+            <div class="arrow-down"></div>`)
+            .style("left", (bar.getBoundingClientRect().left - 30) + "px")
+            .style("top", (bar.getBoundingClientRect().top - 55) + "px");
         })
         .on("mouseout", function(d, idx, bars) {
-          //mouseout event to hide the tooltip and change the bar color back
+          // mouseout event to hide the tooltip and change the bar color back
           let color = d.load > 1 ? 'red' : 'green';
           let bar = bars[idx];
           bar.style.fill = color;
@@ -118,7 +122,7 @@ export default React.createClass({
     return <div className="graph-container">
       <h1>System Load Monitoring</h1>
       <div className="graph" ref="graph">
-      </div>;
-    </div>
+      </div>
+    </div>;
   }
 });

@@ -14,8 +14,7 @@ export const Load = React.createClass({
         <Messages errorMessages={this.props.errorMessages} ref="messages" clearedMessages={this.props.clearedMessages} />
       </div> :
       <div className="loader">Loading...</div>
-    )
-    ;
+    );
   }
 })
 

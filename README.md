@@ -1,13 +1,15 @@
 # Load Monitoring Application
-The project is a React-Redux-D3 application with Immutable.js. The application visualizes load-monitoring on a system application.
+The project is a React-Redux-D3 application with Immutable.js. The application visualizes load-monitoring on a system application. There's a node server using socket.io to communicate to the client, which receives the new state tree and applies set state to it.
 
 ### Features
 * Tooltip Hover
 * Error / Cleared Message Persistence
 * Loading State if the app is refreshed within the 10s interval
+* Autoprefixed css to last 2 browser versions
+* Hot reloading
 
 # Example
-
+![Example Image](http://i.imgur.com/D8wd5Gg.png)
 
 # Organization
 Code is organized in app by client and server responsibilities. The d3 logic is encapsulated within a react component.
@@ -39,6 +41,8 @@ Runs tests on both client and server
 
 *Visual Improvement*: More interesting visual design, css transitions between renders
 
+*Performance Optimization*: Move more of the visual transitions around the tooltip away from d3
+
 ## Server-Side
 
-*Optimization / refactor*: Refactor services to be more functional and use immutable on the back-end as well.
+*Optimization / Refactor*: Refactor services to be more functional and use immutable on the back-end as well.

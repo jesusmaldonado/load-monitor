@@ -1,6 +1,7 @@
 import {Map} from 'immutable';
 
 function setState(state, newState){
+  console.log(newState);
   return state.merge(newState);
 }
 

@@ -82,12 +82,17 @@ LoadMonitor.prototype.parseLoad = function() {
     const string = `${data}`
     const re = /load averages: ([0-9].[0-9]+)/ig;
     const match = string.match(re)[0].replace("load averages: ", "");
-    const load = Number(match);
+    var load;
+    if (Number(match) > 1){
+      load = Number(match) - 1;
+    } else {
+      load = Number(match);
+    }
     this.addLoad(load);
   });
 }
 
 LoadMonitor.prototype.monitorLoad = function() {
   this.parseLoad();
-  setInterval(this.parseLoad.bind(this), 100);
+  setInterval(this.parseLoad.bind(this), 10000);
 }

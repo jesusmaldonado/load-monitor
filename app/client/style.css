@@ -1,6 +1,5 @@
 body {
   font: 10px 'Source Sans Pro', sans-serif;
-  display: flex;
   color: #2c3e50;
   align-items: center;
   text-align: center;
@@ -24,6 +23,20 @@ body {
     border: 1px;
     border-radius: 8px;
     pointer-events: none;
+}
+
+.time-stamp {
+  position: relative;
+}
+
+.arrow-down {
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid black;
+  right: 20px;
+  position: absolute;
 }
 
 .load-container {
@@ -51,6 +64,11 @@ body {
   border-radius: 8px;
   padding: 1em;
   font-size: 1em;
+}
+
+.errorMessage.mini {
+  padding: 0.5em 0.5em;
+  margin-bottom: 0.5em;
 }
 
 .clearedMessage {
