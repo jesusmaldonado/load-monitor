@@ -11,7 +11,6 @@ class LoadMonitor {
   }
   removeTenMinutesAgo(){
     const tenMinutesAgo = moment().subtract(10, 'minutes');
-    console.log(this.loads);
     Object.keys(this.loads).forEach((time) => {
       if (moment.unix(time).isBefore(tenMinutesAgo)){
         delete this.loads[time];
