@@ -42,7 +42,6 @@ export default React.createClass({
     });
     x.domain(loads.map(function(load) { return load['time']; }));
     y.domain([0, d3.max(loads, function(load) { return load['load']; })]);
-    console.log(x.bandwidth());
     // the custom tick logic makes it so that only every 0, 10, 20...60th
     // measurements are available, otherwise the domain is too noisy
     var ticks = x.domain().filter(function(d,i){ return (i % 10 == 0 || i == 59); } );
