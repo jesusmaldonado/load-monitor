@@ -1,6 +1,7 @@
 # Load Monitoring Application
 The project is a React-Redux-D3 application with Immutable.js. The application visualizes load-monitoring on a system application. There's a node server using socket.io to communicate to the client, which receives the new state tree and applies set state to it.
 
+**Note:** The app makes a simplifying assumption, that the first minute of activity (the first number from `uptime`) represents the accurate activity at that particular instance in time.
 ### Features
 * Tooltip Hover
 * Error / Cleared Message Persistence
@@ -23,7 +24,7 @@ Starts the server
 ```
 npm run client
 ```
-Starts the client (localhost:8080)
+Starts the client (localhost:8080) (wait until packages are installed, do this in a new window)
 
 # Running tests
 ```
