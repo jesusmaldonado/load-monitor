@@ -16,6 +16,11 @@ The project is a React-Redux-D3 application with Immutable.js. The application v
 Code is organized in app by client and server responsibilities. The d3 logic is encapsulated within a react component.
 
 # Getting started
+NOTE: App has been tested with 9.2.0 if you're running. Check if you're running another node version with:
+```
+node -v // should be 9.2.0
+```
+
 ```
 npm install && npm run server
 ```
