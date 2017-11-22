@@ -81,14 +81,16 @@ LoadMonitor.prototype.parseLoad = function() {
   top.stdout.on('data', (data) => {
     const string = `${data}`
     const re = /load averages: ([0-9].[0-9]+)/ig;
-    const match = string.match(re)[0].replace("load averages: ", "");
-    var load;
-    if (Number(match) > 1){
-      load = Number(match) - 1;
-    } else {
-      load = Number(match);
+    if (string.match(re) && string.match(re)[0]) {
+      const match = string.match(re)[0].replace("load averages: ", "");
+      let load;
+      if (Number(match) > 1){
+        load = Number(match) - 1;
+      } else {
+        load = Number(match);
+      }
+      this.addLoad(load);
     }
-    this.addLoad(load);
   });
 }
 
