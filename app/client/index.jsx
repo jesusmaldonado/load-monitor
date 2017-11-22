@@ -10,10 +10,8 @@ import reducer from './reducer';
 import App from './components/App';
 import {LoadContainer} from './components/Load';
 import remoteActionMiddleware from './remote_action_middleware';
-
 const socket = io();
 socket.on('state', state => {
-  console.log(state);
   store.dispatch(setState(state))
 });
 const createStoreWithMiddleWare = applyMiddleware(

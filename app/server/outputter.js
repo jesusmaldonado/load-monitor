@@ -21,5 +21,6 @@ Outputter.prototype.output = function(monitorResp){
   })
   response["errorMessages"] = errorMessages;
   response["clearedMessages"] = clearedMessages;
+  console.log(monitorResp);
   this.server.emit(response);
 }

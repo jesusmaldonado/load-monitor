@@ -42,7 +42,6 @@ LoadMonitor.prototype.addLoad = function (load) {
   } else {
     this.clearAlerts(average);
   }
-
   this.outputter.output({
     loads: this.loads,
     averages: this.averages,
@@ -80,9 +79,9 @@ LoadMonitor.prototype.parseLoad = function() {
 
   top.stdout.on('data', (data) => {
     const string = `${data}`
-    const re = /load averages: ([0-9].[0-9]+)/ig;
-    if (string.match(re) && string.match(re)[0]) {
-      const match = string.match(re)[0].replace("load averages: ", "");
+    const re = /load (average|averages): ([0-9]+\.[0-9]+)/i;
+    if (string.match(re) && string.match(re)[2]) {
+      let match = string.match(re)[2];
       let load;
       if (Number(match) > 1){
         load = Number(match) - 1;
