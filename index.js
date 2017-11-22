@@ -9,6 +9,9 @@ const args = process.argv.slice(2);
 
 // start the server
 const serverProcess = spawn('./node_modules/.bin/babel-node', ['app/server/index.js']);
+serverProcess.on('error', (err) => {
+  console.error(`${err.message}`)
+})
 serverProcess.stdout.on('data', (data) => {
   console.log(`${data}`);
 });
@@ -42,6 +45,9 @@ const buildWebpack = (!isDevMode && !fs.existsSync('/dist/bundle.js')) ||
 
 if (buildWebpack){
   const webpackProcess = spawn(webpackCommand)
+  webpackProcess.on('error', (err) => {
+    console.error(`${err.message}`)
+  })
   webpackProcess.stdout.on('data', (data) => {
     console.log(`${data}`);
   });
