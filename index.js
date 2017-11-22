@@ -1,45 +1,66 @@
-import filter from 'lodash';
-import moment from 'moment';
-class LoadMonitor {
-  constructor() {
-    this.loads = {}
-  }
-  addLoad(load) {
-    const date = moment().unix();
-    this.loads[date] = load;
-    this.removeTenMinutesAgo();
-  }
-  removeTenMinutesAgo(){
-    const tenMinutesAgo = moment().subtract(10, 'minutes');
-    Object.keys(this.loads).forEach((time) => {
-      if (moment.unix(time).isBefore(tenMinutesAgo)){
-        delete this.loads[time];
-      }
-    });
-  }
-  parseLoad(){
-    const spawn = require('child_process').spawn;
-    const top = spawn('uptime');
+const { spawn } = require('child_process');
+const express = require("express");
+const path = require("path");
+const fs = require('fs')
 
-    top.stdout.on('data', (data) => {
-      const string = `${data}`
-      const re = /load averages: ([0-9].[0-9]+)/ig;
-      const match = string.match(re)[0].replace("load averages: ", "");
-      const load = Number(match);
-      this.addLoad(load);
-    });
+//this script can accept a --dev flag to run this in development mode
+const args = process.argv.slice(2);
 
-    top.stderr.on('data', (data) => {
-      //add error logic
-    });
+// start the server
+const serverProcess = spawn('./node_modules/.bin/babel-node', ['app/server/index.js']);
+serverProcess.stdout.on('data', (data) => {
+  console.log(`${data}`);
+});
 
-    top.on('close', (code) => {
-      //add close logic
-    });
-  }
-  monitorLoad(){
-    setInterval(this.parseLoad.bind(this), 1000);
-  }
+serverProcess.stderr.on('data', (data) => {
+  console.error(`${data}`);
+});
+
+serverProcess.on('close', (code) => {
+  console.log(`child process exited with code ${code}`);
+});
+
+function initiateExpressServer(){
+  const app = express();
+  app.use(express.static(__dirname + '/dist'));
+  app.get('/', (req, res) => {
+    res.sendFile('index.html');
+  });
+  app.listen(8080);
+  console.log('listening on port http://localhost:8080');
 }
-var a = new LoadMonitor();
-a.monitorLoad();
+
+
+// start the client in the appropriate mode
+const isDevMode = args.includes('--dev');
+const webpackCommand = isDevMode ?
+  './node_modules/.bin/webpack-dev-server' :
+  './node_modules/.bin/webpack';
+const buildWebpack = (!isDevMode && !fs.existsSync('/dist/bundle.js')) ||
+  isDevMode;
+  
+if (buildWebpack){
+  const webpackProcess = spawn(webpackCommand)
+  webpackProcess.stdout.on('data', (data) => {
+    console.log(`${data}`);
+  });
+
+  webpackProcess.stderr.on('data', (data) => {
+    console.error(`${data}`);
+  });
+
+  webpackProcess.on('close', (code) => {
+    if (code === 0){
+      const outputString = isDevMode ?
+        'webpack dev server loaded, listening on http:\/\/localhost:8080' :
+        'webpack completed!'
+      if (!isDevMode) {
+        initiateExpressServer();
+      }
+    } else {
+      console.error('webpack failed');
+    }
+  });
+} else {
+  initiateExpressServer();
+}

@@ -22,15 +22,23 @@ node -v // should be 9.2.0
 ```
 
 ```
-npm install && npm run server
+npm install
 ```
-Starts the server
+Make sure to NPM Install!
+
+## Developer Mode:
 
 ```
-npm run client
+npm run devmode
 ```
-Starts the client (localhost:8080) (wait until packages are installed, do this in a new window)
+Starts the server, starts webpack dev server on http://localhost:8080
 
+## Production Mode:
+```
+npm start
+```
+Starts the server, makes the build using webpack if no dist/bundle.js exists
+and starts an express server running on http://localhost:8080
 # Running tests
 ```
   npm run test
