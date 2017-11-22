@@ -18,30 +18,30 @@ Code is organized in app by client and server responsibilities. The d3 logic is 
 # Getting started
 NOTE: App has been tested with 9.2.0 if you're running. Check if you're running another node version with:
 ```
-node -v // should be 9.2.0
+  node -v // should be 9.2.0
 ```
 
 ```
-npm install
+  yarn install
 ```
 Make sure to NPM Install!
 
 ## Developer Mode:
 
 ```
-npm run devmode
+  yarn devmode
 ```
-Starts the server, starts webpack dev server on http://localhost:8080
+Starts the server, starts webpack dev server on http://localhost:8090
 
 ## Production Mode:
 ```
-npm start
+  yarn start
 ```
 Starts the server, makes the build using webpack if no dist/bundle.js exists
 and starts an express server running on http://localhost:8080
 # Running tests
 ```
-  npm run test
+  yarn test
 ```
 Runs tests on both client and server
 

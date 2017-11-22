@@ -1,11 +1,13 @@
 var webpack = require('webpack');
-
+const EXPRESS_PORT = process.env.PORT || 8080;
+const entries = process.env.NODE_ENV !== 'development' ?
+[ './app/client/index.jsx' ] : [
+  'webpack-dev-server/client?http://0.0.0.0:8090/',
+  'webpack/hot/dev-server',
+  './app/client/index.jsx'
+];
 module.exports = {
-  entry: [
-    'webpack-dev-server/client?http://localhost:8080',
-    'webpack/hot/only-dev-server',
-    './app/client/index.jsx'
-  ],
+  entry: entries,
   module: {
     loaders: [
       {
@@ -33,7 +35,16 @@ module.exports = {
   devtool: '#source-map',
   devServer: {
     contentBase: './dist',
-    hot: true
+    hot: true,
+    host: '0.0.0.0',
+    port: 8090,
+    proxy: {
+      '/socket.io': {
+          target: 'http://0.0.0.0:8080',
+          secure: false,
+          ws: true
+      }
+    }
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin()

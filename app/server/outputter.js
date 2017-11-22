@@ -1,4 +1,4 @@
-import { LoadServer } from './server'
+import { LoadServer } from '../../server'
 export function Outputter(){
   this.server = new LoadServer()
 }
