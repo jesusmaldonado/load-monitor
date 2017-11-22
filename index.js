@@ -2,6 +2,7 @@ const { spawn } = require('child_process');
 const express = require("express");
 const path = require("path");
 const fs = require('fs')
+const EXPRESS_PORT = process.env.PORT || 8080;
 
 //this script can accept a --dev flag to run this in development mode
 const args = process.argv.slice(2);
@@ -26,7 +27,7 @@ function initiateExpressServer(){
   app.get('/', (req, res) => {
     res.sendFile('index.html');
   });
-  app.listen(8080);
+  app.listen(EXPRESS_PORT);
   console.log('listening on port http://localhost:8080');
 }
 
@@ -38,7 +39,7 @@ const webpackCommand = isDevMode ?
   './node_modules/.bin/webpack';
 const buildWebpack = (!isDevMode && !fs.existsSync('/dist/bundle.js')) ||
   isDevMode;
-  
+
 if (buildWebpack){
   const webpackProcess = spawn(webpackCommand)
   webpackProcess.stdout.on('data', (data) => {
