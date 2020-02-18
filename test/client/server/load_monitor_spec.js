@@ -1,5 +1,5 @@
 import {expect} from 'chai';
-import {LoadMonitor} from '../../app/server/load_monitor';
+import {LoadMonitor} from '../../../app/server/load_monitor';
 import timekeeper from 'timekeeper';
 var time = new Date(1330688329321);
 timekeeper.freeze(time);

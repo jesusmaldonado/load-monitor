@@ -56,10 +56,10 @@ describe('Messages', () => {
     expect(errArray.length).to.equal(4);
     expect(clrArray.length).to.equal(0);
 
-    expect(errArray[0].textContent).to.eql(' High load generated an alert - Load = 1.57, Triggered at 11:49:04 am');
-    expect(errArray[1].textContent).to.eql(' High load generated an alert - Load = 1.46, Triggered at 11:48:54 am');
-    expect(errArray[2].textContent).to.eql(' High load generated an alert - Load = 1.30, Triggered at 11:48:44 am');
-    expect(errArray[3].textContent).to.eql(' High load generated an alert - Load = 1.13, Triggered at 11:48:34 am');
+    expect(errArray[0].textContent).to.eql(' High load generated an alert - Load = 1.57, Triggered at 17:49:04 pm');
+    expect(errArray[1].textContent).to.eql(' High load generated an alert - Load = 1.46, Triggered at 17:48:54 pm');
+    expect(errArray[2].textContent).to.eql(' High load generated an alert - Load = 1.30, Triggered at 17:48:44 pm');
+    expect(errArray[3].textContent).to.eql(' High load generated an alert - Load = 1.13, Triggered at 17:48:34 pm');
   });
 
   it('renders error messages and cleared messages', () => {
@@ -78,12 +78,12 @@ describe('Messages', () => {
     expect(miniErrors.length).to.equal(2);
     expect(clearHeading).to.be.ok;
 
-    expect(errArray[0].textContent).to.eql(' High load generated an alert - Load = 1.57, Triggered at 11:49:04 am');
-    expect(errArray[1].textContent).to.eql(' High load generated an alert - Load = 1.46, Triggered at 11:48:54 am');
-    expect(errArray[2].textContent).to.eql(' High load generated an alert - Load = 1.30, Triggered at 11:48:44 am');
-    expect(errArray[3].textContent).to.eql(' High load generated an alert - Load = 1.13, Triggered at 11:48:34 am');
-    expect(clearHeading.textContent).to.eql(' System recovered! - load = 0.99, triggered at 11:46:14 am');
-    expect(miniErrors[0].textContent).to.eql('Load = 1.01, triggered at 11:44:54 am');
-    expect(miniErrors[1].textContent).to.eql('Load = 1.06, triggered at 11:45:04 am');
+    expect(errArray[0].textContent).to.eql(' High load generated an alert - Load = 1.57, Triggered at 17:49:04 pm');
+    expect(errArray[1].textContent).to.eql(' High load generated an alert - Load = 1.46, Triggered at 17:48:54 pm');
+    expect(errArray[2].textContent).to.eql(' High load generated an alert - Load = 1.30, Triggered at 17:48:44 pm');
+    expect(errArray[3].textContent).to.eql(' High load generated an alert - Load = 1.13, Triggered at 17:48:34 pm');
+    expect(clearHeading.textContent).to.eql(' System recovered! - load = 0.99, triggered at 17:46:14 pm');
+    expect(miniErrors[0].textContent).to.eql('Load = 1.01, triggered at 17:44:54 pm');
+    expect(miniErrors[1].textContent).to.eql('Load = 1.06, triggered at 17:45:04 pm');
   });
 });

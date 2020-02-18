@@ -13,7 +13,7 @@ const buildWebpack = (!isDevMode && !fs.existsSync('/dist/bundle.js')) ||
   isDevMode;
 startSocketServer();
 
-if (buildWebpack){
+if (buildWebpack) {
   const webpackProcess = spawn(webpackCommand);
   webpackProcess.on('error', (err) => {
     console.error(`${err.message}`)
