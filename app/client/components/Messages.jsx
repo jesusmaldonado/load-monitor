@@ -1,17 +1,18 @@
-import React from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
+import React, { PureComponent } from 'react';
 import moment from 'moment';
 import ErrorMessage from './ErrorMessage';
 import ClearedMessage from './ClearedMessage';
 
-export default React.createClass({
-  mixins: [PureRenderMixin],
+class Messages extends PureComponent {
+  constructor(props){
+    super(props);
+  }
   getErrorMessages(){
     return this.props.errorMessages || [];
-  },
+  }
   getClearedMessages(){
     return this.props.clearedMessages || [];
-  },
+  }
   render(){
     return <div className="message">
       <div className="errorMessages-container" ref="errorMessages">
@@ -30,4 +31,6 @@ export default React.createClass({
       </div>
     </div>;
   }
-})
+};
+
+export default Messages;

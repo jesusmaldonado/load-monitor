@@ -1,16 +1,20 @@
-import React from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
+import React, { PureComponent } from 'react';
 import moment from 'moment';
 import ErrorMessage from './ErrorMessage';
 
-export default React.createClass({
-  mixins: [PureRenderMixin],
+class ClearedMessage extends PureComponent {
+  constructor(props){
+    super(props);
+  }
+
   getClearedTime(clearedMessage){
     return moment.unix(clearedMessage.get('loadClearTime')).format('H:mm:ss a');
-  },
+  }
+
   getClearedMessage(){
     return this.props.clearedMessage || {};
-  },
+  }
+
   render(){
     return (
       <div key={this.getClearedMessage()} className="clearedMessage">
@@ -27,4 +31,5 @@ export default React.createClass({
       </div>
     );
   }
-})
+}
+export default ClearedMessage;

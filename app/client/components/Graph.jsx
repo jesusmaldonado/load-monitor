@@ -1,12 +1,14 @@
 // React serves purely as a store
 // This component leaves the visual logic to d3
 
-import React from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
+import React, { PureComponent } from 'react';
 import * as d3 from "d3";
 import moment from 'moment';
-export default React.createClass({
-  mixins: [PureRenderMixin],
+
+class Graph extends PureComponent {
+  constructor(props){
+    super(props);
+  }
   getLoads(){
     return this.props.loads || [];
   },
@@ -124,4 +126,6 @@ export default React.createClass({
       </div>
     </div>;
   }
-});
+};
+
+export default Graph;

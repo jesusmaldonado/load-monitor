@@ -1,22 +1,23 @@
-import React from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
+import React, { PureComponent } from 'react';
 import moment from 'moment';
 
-export default React.createClass({
-  mixins: [PureRenderMixin],
+class ErrorMessage extends PureComponent {
+  constructor(props){
+    super(props);
+  }
   getErrorMessage(){
     return this.props.errorMessage || {};
-  },
+  }
   getTime(errorMessage){
     return moment.unix(errorMessage.get('time')).format('H:mm:ss a');
-  },
+  }
   getClassNames(){
     let classNames = 'errorMessage'
     if (this.props.isMini){
       classNames = `${classNames} mini`;
     }
     return classNames;
-  },
+  }
   render(){
     return (
       this.props.isMini ?
@@ -32,4 +33,6 @@ export default React.createClass({
       </div>
     );
   }
-})
+}
+
+export default ErrorMessage;

@@ -1,6 +1,11 @@
 # Load Monitoring Application
 The project is a React-Redux-D3 application with Immutable.js. The application visualizes load-monitoring on a system application. There's a node server using socket.io to communicate to the client, which receives the new state tree and applies set state to it.
 
+```
+uptime
+```
+Is essentially run on your local machine. Loads <1 are averaged together. This is a full-stack app that uses a SOCKET.IO connection to send a `SET_STATE` event to merge state to subsequent React components. 
+
 **Note:** The app makes a simplifying assumption, that the first minute of activity (the first number from `uptime`) represents the accurate activity at that particular instance in time.
 
 ### Features

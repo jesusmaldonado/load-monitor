@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {
   renderIntoDocument
-} from 'react-addons-test-utils';
+} from 'react-dom/test-utils';
 import {fromJS} from 'immutable';
 import Message from "../../app/client/components/Messages";
 import {expect} from 'chai';

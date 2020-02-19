@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 
-export default React.createClass({
+class App extends PureComponent {
+  constructor(props){
+    super(props);
+  }
   render(){
     return this.props.children;
   }
-})
+};
+
+export default App;

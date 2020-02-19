@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import {connect} from 'react-redux';
 import Graph from './Graph';
 import Messages from './Messages';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import * as actionCreators from '../action_creators';
-export const Load = React.createClass({
-  mixins: [PureRenderMixin],
+
+export class Load extends PureComponent {
+  constructor(props){
+    super(props);
+  }
   render(){
     return (
       this.props.loads ?
@@ -16,7 +19,7 @@ export const Load = React.createClass({
       <div className="loader">Loading...</div>
     );
   }
-})
+};
 
 function mapStateToProps(state) {
   return {

@@ -25,7 +25,8 @@ module.exports = {
     extensions: ['', '.js', '.jsx']
   },
   externals:[{
-      xmlhttprequest: '{XMLHttpRequest:XMLHttpRequest}'
+      xmlhttprequest: '{XMLHttpRequest:XMLHttpRequest}',
+      react: 'React'
   }],
   output: {
     path: __dirname + '/dist',
