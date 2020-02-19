@@ -11,7 +11,7 @@ class Graph extends PureComponent {
   }
   getLoads(){
     return this.props.loads || [];
-  },
+  }
   installD3(){
     // needed to clear d3
     this.refs.graph.innerHTML = '';
@@ -112,13 +112,13 @@ class Graph extends PureComponent {
     // add the Y axis
     svg.append("g")
       .call(d3.axisLeft(y));
-  },
+  }
   componentDidUpdate(){
     this.installD3();
-  },
+  }
   componentDidMount(){
     this.installD3();
-  },
+  }
   render(){
     return <div className="graph-container">
       <h1>System Load Monitoring</h1>

@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node index.js",
     "devmode": "NODE_ENV=development node index.js --dev",
-    "build": "webpack",
+    "build": "./node_modules/.bin/webpack",
     "test:client": "./node_modules/.bin/mocha --require babel-core/register \"test/client/*@(.js|.jsx)\"",
     "test:server": "./node_modules/.bin/mocha --require babel-core/register \"test/client/server/*@(.js|.jsx)\"",
     "test": "npm run test:client && npm run test:server"
@@ -27,37 +27,36 @@
   "dependencies": {
     "autoprefixer-loader": "^3.2.0",
     "babel-cli": "^6.14.0",
+    "babel-core": "^6.14.0",
     "babel-loader": "^6.2.4",
-    "babel-preset-env": "^1.7.0",
+    "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
-    "css-loader": "^3.4.2",
-    "d3": "^4.13.0",
-    "express": "^4.17.1",
+    "css-loader": "^0.23.1",
+    "d3": "^4.2.2",
+    "express": "^4.16.2",
     "immutable": "^3.8.1",
-    "lodash": "^4.17.15",
-    "moment": "^2.24.0",
-    "react": "^16.12.0",
+    "lodash": "^4.15.0",
+    "moment": "^2.14.1",
+    "react": "^15.3.0",
+    "react-addons-pure-render-mixin": "^15.2.1",
     "react-addons-test-utils": "^15.2.1",
-    "react-dom": "^16.12.0",
+    "react-dom": "^15.3.0",
     "react-hot-loader": "^1.3.0",
-    "react-redux": "^4.4.10",
+    "react-redux": "^4.4.5",
     "react-router": "^2.0.0",
     "redux": "^3.5.2",
-    "socket.io": "^2.3.0",
-    "socket.io-client": "^2.3.0",
+    "socket.io": "^2.0.4",
+    "socket.io-client": "^2.0.4",
     "sticky-session": "^1.1.2",
     "style-loader": "^0.13.1",
-    "webpack": "^4.41.6"
+    "webpack": "^1.13.1"
   },
   "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-register": "^6.26.0",
     "chai": "^3.5.0",
     "chai-immutable": "^1.6.0",
     "jsdom": "^9.4.1",
-    "mocha": "^7.0.1",
+    "mocha": "^3.0.2",
     "timekeeper": "^0.1.1",
-    "webpack-cli": "^3.3.11",
-    "webpack-dev-server": "^3.10.3"
+    "webpack-dev-server": "^1.14.1"
   }
 }

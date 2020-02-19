@@ -2,7 +2,6 @@ import React, { PureComponent } from 'react';
 import {connect} from 'react-redux';
 import Graph from './Graph';
 import Messages from './Messages';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
 import * as actionCreators from '../action_creators';
 
 export class Load extends PureComponent {

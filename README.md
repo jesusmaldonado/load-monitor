@@ -4,7 +4,7 @@ The project is a React-Redux-D3 application with Immutable.js. The application v
 ```
 uptime
 ```
-Is essentially run on your local machine. Loads <1 are averaged together. This is a full-stack app that uses a SOCKET.IO connection to send a `SET_STATE` event to merge state to subsequent React components. 
+Is essentially run on your local machine. Loads <1 are averaged together. This is a full-stack app that uses a SOCKET.IO connection to send a `SET_STATE` event to merge state to subsequent React components.  `Cleared Messages` group all `Error Messages` that existed previous to a load < 1; Otherwise, `Error Messages` is a list of loads > 1 sorted by time. New Error messages are added on a set interval of 1 second.
 
 **Note:** The app makes a simplifying assumption, that the first minute of activity (the first number from `uptime`) represents the accurate activity at that particular instance in time.
 
@@ -12,7 +12,7 @@ Is essentially run on your local machine. Loads <1 are averaged together. This i
 * Tooltip Hover
 * Error / Cleared Message Persistence
 * Loading State if the app is refreshed within the 10s interval
-* Autoprefixed css to last 2 browser versions
+* Post css to last 2 browser versions
 * Hot reloading
 
 # Example

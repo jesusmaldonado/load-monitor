@@ -22,11 +22,10 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['', '.js', '.jsx']
+    extensions:['', '.js', '.jsx']
   },
   externals:[{
-      xmlhttprequest: '{XMLHttpRequest:XMLHttpRequest}',
-      react: 'React'
+      xmlhttprequest: '{XMLHttpRequest:XMLHttpRequest}'
   }],
   output: {
     path: __dirname + '/dist',
