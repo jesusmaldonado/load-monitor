@@ -17,34 +17,45 @@ The project is a React-Redux-D3 application with Immutable.js. The application v
 Code is organized in app by client and server responsibilities. The d3 logic is encapsulated within a react component.
 
 # Getting started
-NOTE: App has been tested with 9.2.0 if you're running. Check if you're running another node version with:
+NOTE: App has been tested with 12.15.0 if you're running. Check if you're running another node version with:
 ```
-  node -v // should be 9.2.0
+  node -v // should be 12.15.0
 ```
 
 ```
-  yarn install
+  npm install
 ```
 Make sure to NPM Install!
 
 ## Developer Mode:
 
 ```
-  yarn devmode
+  npm run devmode
 ```
 Starts the server, starts webpack dev server on http://localhost:8090
 
 ## Production Mode:
 ```
-  yarn start
+  npm run start
 ```
 Starts the server, makes the build using webpack if no dist/bundle.js exists
 and starts an express server running on http://localhost:8080
 # Running tests
+## All Tests
 ```
-  yarn test
+  npm run test
 ```
-Runs tests on both client and server
+
+## Client Tests
+```
+  npm run test:client
+```
+
+## Server Tests
+```
+  npm run test:client
+```
+
 
 # Improvements / To-Do
 
