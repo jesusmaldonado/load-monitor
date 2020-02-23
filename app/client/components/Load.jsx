@@ -15,7 +15,7 @@ export class Load extends PureComponent {
         <Graph loads={this.props.loads} ref="graph" />
         <Messages errorMessages={this.props.errorMessages} ref="messages" clearedMessages={this.props.clearedMessages} />
       </div> :
-      <div className="loader">Loading...</div>
+      <div className="loader">Waiting for results</div>
     );
   }
 };

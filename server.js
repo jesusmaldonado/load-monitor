@@ -3,13 +3,15 @@ import express from 'express';
 import path from 'path';
 import webpack from 'webpack';
 import sticky from 'sticky-session';
+import cors from 'cors';
 const EXPRESS_PORT = process.env.PORT || 8080;
 
 export function LoadServer(){
   const app = express();
+  app.use(cors());
   const server = require('http').Server(app);
   server.listen(EXPRESS_PORT);
-  this.io = io(server);
+  this.io = io(server, { origins: '*:*'});
   global.io = this.io;
   app.use(express.static('dist'))
   app.get('/', (req, res) => {
