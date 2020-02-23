@@ -1,10 +1,13 @@
 {
+  "homepage": "http://jesusmaldonado.github.io/monitor-load",
   "name": "load",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "cacheDirectories": [],
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "node index.js",
     "devmode": "NODE_ENV=development node index.js --dev",
     "build": "./node_modules/.bin/webpack",
@@ -54,6 +57,7 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "chai-immutable": "^1.6.0",
+    "gh-pages": "^2.2.0",
     "jsdom": "^9.4.1",
     "mocha": "^3.0.2",
     "timekeeper": "^0.1.1",
